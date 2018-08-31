@@ -32,12 +32,12 @@ sub new {
 #-----------------------------------------------------------------------------
 
 sub run {
-    my ($self, $commands) = @_;
+    my ($self, $commands_raw) = @_;
 
-    my $type = ref $commands;
-    my @commands = !$type ? read_file($commands)
-        : $type eq 'SCALAR' ? split "\n", ${$commands}
-            : $type eq 'ARRAY' ? @{$commands}
+    my $type = ref $commands_raw;
+    my @commands_raw = !$type ? read_file($commands_raw)
+        : $type eq 'SCALAR' ? split "\n", ${$commands_raw}
+            : $type eq 'ARRAY' ? @{$commands_raw}
                 : die "Unsupported type: $type";
 
     open my $fh, '|-', $self->{shell} or die $!;
@@ -51,8 +51,19 @@ sub run {
         exit;
     };
 
-    chomp @commands;
-    @commands = grep { /^\s*[^\#;]\S+/ } @commands;
+    chomp @commands_raw;
+    @commands_raw = grep { /^\s*[^\#;]\S+/ } @commands_raw;
+
+    # squeeze multi line commands into one array slot (indicated by ~~~)
+    my @commands = ();
+    for (my $i=0; $i<@commands_raw; $i++) {
+        if ($commands_raw[$i] =~ /[~]{3}(.*)/ and $i != 0) {
+            $commands[@commands - 1] .= "\n$1";
+        }
+        else {
+            push @commands, $commands_raw[$i];
+        }
+    }
 
     my $continue_to_end = 0;
 
