@@ -1,4 +1,4 @@
-package App::Cleo;
+package App::Cleo::Patra;
 
 use strict;
 use warnings;
@@ -174,19 +174,26 @@ sub do_cmd {
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 App::Cleo - Play back shell commands for live demonstrations
 
 =head1 SYNOPSIS
 
-  use App::Cleo
-  my $cleo = App::Cleo->new(%options);
-  $cleo->run($commands);
+  use App::Cleo::Patra
+  my $patra = App::Cleo::Patra->new(%options);
+  $patra->run($commands);
 
 =head1 DESCRIPTION
 
-App::Cleo is the back-end for the L<cleo> utility.  Please see the L<cleo>
+B<Important:>
+C<patra> is an experimental fork from C<cleo>.
+You should check the current differences from C<App-Cleo> and decide, which one you want to use.
+It may be, that in your current time, C<patra> is merged back into C<cleo> or obsolete for other reasons.
+
+App::Cleo::Patra is the back-end for the L<patra> utility.  Please see the L<patra>
 documentation for details on how to use this.
 
 =head1 CONSTRUCTOR
@@ -237,8 +244,12 @@ array will be treated as a command.
 
 Jeffrey Ryan Thalhammer <thaljef@cpan.org>
 
+Boris Däppeb (BORISD) <bdaeppen.perl@gmail.com>
+
 =head1 COPYRIGHT
 
-Copyright (c) 2014, Imaginative Software Systems
+cleo - Copyright (c) 2014, Imaginative Software Systems
+
+patra - Boris Däppen (BORISD) 2018
 
 =cut

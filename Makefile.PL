@@ -7,8 +7,8 @@ use ExtUtils::MakeMaker;
 #-----------------------------------------------------------------------------
 
 WriteMakefile(
-     NAME         => 'App::Cleo',
-     VERSION_FROM => 'lib/App/Cleo.pm',
+     NAME         => 'App::Cleo::Patra',
+     VERSION_FROM => 'lib/App/Cleo/Patra.pm',
      LICENSE      => 'perl_5',
      PREREQ_PM    => {
         'Term::ReadKey'   => '0',
@@ -18,13 +18,13 @@ WriteMakefile(
         'strict'          => '0',
         'warnings'        => '0',
     },
-    EXE_FILES   => ['bin/cleo'],
+    EXE_FILES   => ['bin/patra'],
     META_MERGE    => {
         resources   => {
             repository => {
                 type => 'git',
-                url  => 'git@github.com:thaljef/App-Cleo.github',
-                web  => 'https://github.com/thaljef/App-Cleo',
+                url  => 'git@github.com:borisdaeppen/App-Cleo.git',
+                web  => 'https://github.com/borisdaeppen/App-Cleo',
             },
         },
         'meta-spec' => { version => 2 },

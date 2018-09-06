@@ -1,7 +1,7 @@
-bin/cleo
+bin/patra
 Changes
 examples/pinto.demo
-lib/App/Cleo.pm
+lib/App/Cleo/Patra.pm
 Makefile.PL
 MANIFEST			This list of files
 README.md
