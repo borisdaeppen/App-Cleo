@@ -10,7 +10,14 @@ our $VERSION = 0.003;
 
 die 'Usage: cleo COMMAND_FILE' if not @ARGV;
 my $cleo = App::Cleo->new;
-$cleo->run(shift);
+
+my $multiline = 0;
+if ($ARGV[0] eq '-m') {
+    $multiline = 1;
+    shift @ARGV;
+}
+
+$cleo->run(shift, $multiline);
 exit;
 
 #-----------------------------------------------------------------------------
